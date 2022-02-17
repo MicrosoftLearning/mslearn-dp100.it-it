@@ -1,12 +1,12 @@
 ---
 lab:
   title: Usare la finestra di progettazione di Azure Machine Learning
-ms.openlocfilehash: d9ebd39449d17d36b9b9e4ad2d2d43c4b866a305
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 3bfe1bf2e119c295ad3931c569e1f09b41bb2174
+ms.sourcegitcommit: 38540a481d1dfa9bab570777b72e3cf9b6ee6da7
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832641"
+ms.lasthandoff: 12/16/2021
+ms.locfileid: "135372694"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Usare la finestra di progettazione di Azure Machine Learning
 
@@ -66,8 +66,9 @@ Per iniziare a usare la finestra di progettazione, è prima di tutto necessario 
 2. Modificare il nome della pipeline predefinita (**Pipeline-Created-on-* data***) in **Visual Diabetes Training** facendo clic sul nome predefinito (oppure fare clic sull'icona **&#9881;** accanto al nome della pipeline in alto e modificare il nome).
 3. Tenere presente che è necessario specificare una destinazione di calcolo in cui eseguire la pipeline. Nel riquadro **Impostazioni** fare clic su **Seleziona destinazione di calcolo** e selezionare il cluster di elaborazione desiderato.
 4. Sul lato sinistro della finestra di progettazione espandere la sezione **Set di dati** e trascinare il **set di dati diabete** nell'area di disegno.
-5. Selezionare il modulo **set di dati diabete** nell'area di disegno. Fare clic con il pulsante destro del mouse sul modulo e dal menu **Visualizza** scegliere **Output del set di dati**.
-6. Esaminare lo schema dei dati tenendo presente che è possibile visualizzare le distribuzioni delle varie colonne sotto forma di istogrammi. Chiudere quindi la finestra di visualizzazione.
+5. Selezionare il modulo **set di dati diabete** nell'area di disegno. Farvi quindi clic con il pulsante destro del mouse e scegliere **Anteprima dei dati**.
+6. Nel riquadro DatasetOutput selezionare la scheda **Profilo**.
+7. Esaminare lo schema dei dati tenendo presente che è possibile visualizzare le distribuzioni delle varie colonne sotto forma di istogrammi. Chiudere quindi la finestra di visualizzazione.
 
 ## <a name="add-transformations"></a>Aggiungi trasformazioni
 
@@ -116,7 +117,7 @@ Dopo aver definito i passaggi del flusso di dati, è possibile ora eseguire la p
     >
     > Mentre sono in esecuzione, è possibile visualizzare sia la pipeline che l'esperimento creati nelle pagine **Pipeline** ed **Esperimenti**. Al termine, tornare alla pipeline **Visual Diabetes Training** nella pagina della **finestra di progettazione**.
 
-3. Dopo aver completato il modulo **Normalize Data**, selezionarlo e nel riquadro **Impostazioni** e, in particolare, nella scheda **Outputs + logs** (Output e log), nell'area **Data outputs** (Output dati) della sezione **Set di dati trasformato**, fare clic sull'icona **Visualizza** e notare come sia possibile visualizzare le statistiche e le visualizzazioni di distribuzione per le colonne trasformate.
+3. Dopo aver completato il modulo **Normalize Data**, selezionarlo e nel riquadro **Impostazioni** e, in particolare, nella scheda **Outputs + logs** (Output e log), nell'area **Data outputs** (Output dati) della sezione **Set di dati trasformato**, fare clic sull'icona **Anteprima dei dati** e notare come sia possibile visualizzare le statistiche e le visualizzazioni di distribuzione per le colonne trasformate.
 4. Chiudere le visualizzazioni del modulo **Normalize Data** e attendere il completamento degli altri moduli. Visualizzare quindi l'output del modulo **Evaluate Model** per visualizzare le metriche delle prestazioni per il modello.
 
     **Nota**: le prestazioni di questo modello non sono molto elevate, soprattutto perché è stata eseguita solo una parte delle funzionalità di progettazione e di pre-elaborazione. È possibile provare altri algoritmi di classificazione e confrontare i risultati (connettere gli output del modulo **Split Data** a più moduli **Train Model** e **Score Model** e connettere un secondo modello con punteggio al modulo **Evaluate Model** per visualizzare un confronto affiancato). L'obiettivo dell'esercizio è semplicemente quello di illustrare l'interfaccia della finestra di progettazione e non di eseguire il training di un modello perfetto.

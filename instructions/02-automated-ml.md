@@ -1,12 +1,12 @@
 ---
 lab:
   title: Usare Machine Learning automatizzato
-ms.openlocfilehash: 6344e74d7177b4a90c57ac91916c61c78c251452
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 25312648c7957dfd958098bc74faac249382eec8
+ms.sourcegitcommit: 48c912e43571d4bddcc70260e4dc85ebbc040b27
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832686"
+ms.lasthandoff: 11/30/2021
+ms.locfileid: "133289667"
 ---
 # <a name="use-automated-machine-learning"></a>Usare Machine Learning automatizzato
 
@@ -79,18 +79,23 @@ In Azure Machine Learning, le operazioni eseguite sono denominate *esperimenti*.
     - **Configura esecuzione**:
         - **Nome nuovo esperimento**: mslearn-automl-diabetes
         - **Colonna di destinazione**: Diabetic (*questa è l'etichetta per la quale verrà eseguito il training del modello per la previsione)*
-        - **Selezionare cluster di elaborazione**: *il cluster di elaborazione creato in precedenza*
+        - **Select compute type** (Seleziona tipo di calcolo): cluster di elaborazione
+        - **Select Azure ML compute cluster** (Seleziona cluster di elaborazione di Azure ML): *il cluster di elaborazione creato in precedenza*
     - **Tipo di attività e impostazioni**:
         - **Tipo di attività**: classificazione
-        - **Impostazioni aggiuntive per la configurazione**:
+        - Selezionare **View additional configuration settings** (Visualizza altre impostazioni di configurazione) per aprire **Configurazioni aggiuntive**:
             - **Metrica primaria**: selezionare **AUC_Weighted** *(altre informazioni su questa metrica verranno fornite più avanti)*
             - **Spiega modello migliore**: Selezionato: *questa opzione fa in modo che il Machine Learning automatizzato calcoli l'importanza della funzionalità per il modello migliore, rendendo possibile determinare l'influenza di ogni funzionalità nell'etichetta stimata.*
             - **Algoritmi bloccati**: lasciare l'impostazione predefinita. *Teoricamente, è possibile usare tutti gli algoritmi durante il training*
             - **Criterio di uscita**:
                 - **Tempo del processo di training (ore)**: 0,5. *L'esperimento terminerà dopo un massimo di 30 minuti.*
                 - **Soglia di punteggio metrica**: 0,90. *L'esperimento termina se un modello raggiunge una metrica AUC ponderata del 90% o superiore.*
-        - **Impostazioni di definizione delle funzionalità:**
+        - Selezionare **Visualizza impostazioni di definizione delle funzionalità** per aprire **Definizione delle funzionalità**:
             - **Abilita definizione delle funzionalità**: Selezionato: *questa operazione causa la pre-elaborazione automatica delle funzionalità da parte di Azure Machine Learning prima del training.*
+    - **Selezionare il tipo di convalida e di test**:
+        - **Tipo di convalida**: suddivisione tra training e convalida
+        - **Percentage validation of data** (Percentuale di convalida dei dati): 30
+        - **Set di dati di test**: nessun set di dati di test necessario
 
 3. Al termine dell'invio dei dettagli di esecuzione del ML automatizzato, l'avvio verrà eseguito automaticamente. È possibile osservare lo stato dell'esecuzione nel riquadro **Proprietà**.
 4. Quando lo stato di esecuzione passa a *In esecuzione*, visualizzare la scheda **Modelli** e osservare mentre viene provata ogni combinazione possibile di algoritmi di training e passaggi di pre-elaborazione e vengono valutate le prestazioni del modello risultante. La pagina verrà aggiornata automaticamente periodicamente, ma è anche possibile selezionare **&#8635; Aggiorna**. Potrebbero essere necessari circa dieci minuti prima che i modelli inizino a essere visualizzati poiché, per poter iniziare il training, è necessario che i nodi del cluster siano inizializzati e il processo di definizione delle caratteristiche dei dati sia completato. Potrebbe essere ora il momento giusto per una pausa caffè.
@@ -115,11 +120,12 @@ Dopo aver usato il Machine Learning automatizzato per eseguire il training di al
 > **Nota**: in Azure Machine Learning, è possibile distribuire un servizio come Istanze di Azure Container (ACI) o in un cluster del servizio Azure Kubernetes (AKS). Per gli scenari di produzione è consigliabile usare una distribuzione di AKS, per la quale è necessario creare una destinazione di calcolo *cluster di inferenza*. In questo esercizio si userà un servizio ACI, che è una destinazione di distribuzione adatta per i test e non richiede la creazione di un cluster di inferenza.
 
 1. Selezionare la scheda **Dettagli** relativa all'esecuzione che ha prodotto il modello migliore.
-2. Usare il pulsante **Distribuisci** per distribuire il modello con le impostazioni seguenti:
+2. Dall'opzione **Distribuisci** usare il pulsante **Distribuisci in Servizio Web** per distribuire il modello con le impostazioni seguenti:
     - **Nome**: auto-predict-diabetes
     - **Descrizione**: prevedere il diabete
-    - **Tipo di ambiente di calcolo**: ACI
+    - **Tipo di ambiente di calcolo**: Istanza di Azure Container
     - **Abilita autenticazione**: Opzione selezionata
+    - **Use custom deployment assets** (Usa risorse di distribuzione personalizzate): opzione deselezionata
 3. Attendere l'avvio della distribuzione. L'operazione potrebbe richiedere alcuni secondi. Nella scheda **Modello** della sezione **Riepilogo modelli** osservare lo **Stato di distribuzione** del servizio **auto-predict-diabetes**, che deve essere **In esecuzione**. Attendere che questo stato cambi in **Riuscito**. Potrebbe essere necessario selezionare periodicamente **&#8635; Aggiorna**.  **NOTA** Questa operazione potrebbe richiedere alcuni minuti.
 4. In Azure Machine Learning Studio visualizzare la pagina **Endpoint** e selezionare l'endpoint in tempo reale **auto-predict-diabetes**. Selezionare quindi la scheda **Utilizzo** e prendere nota delle informazioni seguenti. Queste informazioni sono necessarie per collegarsi al servizio distribuito da un'applicazione client.
     - Endpoint REST relativo al servizio
