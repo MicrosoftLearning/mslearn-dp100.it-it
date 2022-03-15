@@ -1,12 +1,12 @@
 ---
 lab:
   title: Eseguire esperimenti
-ms.openlocfilehash: 875b204cd18963c53ff0b7d2ee2334ebc22c17e6
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 62b6b79c99142d4311c2d9c0db4b02cfd710feb6
+ms.sourcegitcommit: 66d8872bc3d24c2121e225be132b56f4df7920ac
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832640"
+ms.lasthandoff: 02/12/2022
+ms.locfileid: "138597274"
 ---
 # <a name="run-experiments"></a>Eseguire esperimenti
 
@@ -24,6 +24,8 @@ Anche se è possibile usare la pagina **Notebook** in Azure Machine Learning Stu
 
 1. In [Azure Machine Learning Studio](https://ml.azure.com) visualizzare la pagina **Calcolo** per l'area di lavoro e nella scheda **Istanze di ambiente di calcolo** avviare l'istanza di calcolo se non è già in esecuzione.
 2. Quando l'istanza dell'ambiente di calcolo è in esecuzione, fare clic sul collegamento **Jupyter** per aprire la home page di Jupyter in una nuova scheda del browser. Controllare bene di aprire *Jupyter* e non *JupyterLab*.
+
+> **Suggerimento**: se non si conosce Python usare la [scheda di informazioni di Python](cheat-sheets/dp100-cheat-sheet-python.pdf) per comprendere il codice.
 
 ## <a name="verify-the-azure-machine-learning-sdk-is-installed"></a>Verificare che Azure Machine Learning SDK sia installato
 

@@ -1,12 +1,12 @@
 ---
 lab:
   title: Eseguire il training dei modelli
-ms.openlocfilehash: 1a999d123778609e47360e51872a4fe201bee5ae
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: dffa9edda34c599dfbd372fe898ddcf955f6f200
+ms.sourcegitcommit: 66d8872bc3d24c2121e225be132b56f4df7920ac
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832626"
+ms.lasthandoff: 02/12/2022
+ms.locfileid: "138597262"
 ---
 # <a name="train-models"></a>Esegui il training dei modelli
 
@@ -22,6 +22,8 @@ Anche se è possibile usare la pagina **Notebook** in Azure Machine Learning Stu
 
 1. In [Azure Machine Learning Studio](https://ml.azure.com) visualizzare la pagina **Calcolo** per l'area di lavoro e nella scheda **Istanze di ambiente di calcolo** avviare l'istanza di calcolo se non è già in esecuzione.
 2. Quando l'istanza dell'ambiente di calcolo è in esecuzione, fare clic sul collegamento **Jupyter** per aprire la home page di Jupyter in una nuova scheda del browser.
+
+> **Suggerimento**: se non si conosce Python usare la [scheda di informazioni di Python](cheat-sheets/dp100-cheat-sheet-python.pdf) per comprendere il codice. Se non si ha esperienza di Machine Learning, usare la [panoramica di Machine Learning](cheat-sheets/dp100-cheat-sheet-machine-learning.pdf) per una panoramica semplificata del processo di Machine Learning in Azure Machine Learning.
 
 ## <a name="train-models-using-the-azure-machine-learning-sdk"></a>Eseguire il training dei modelli usando Azure Machine Learning SDK
 

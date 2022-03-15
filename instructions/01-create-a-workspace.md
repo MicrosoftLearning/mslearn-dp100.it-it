@@ -1,12 +1,12 @@
 ---
 lab:
   title: Creare un'area di lavoro di Machine Learning di Azure
-ms.openlocfilehash: a0deba33c56b152f6e0ac1f95cdaae2886574bb6
-ms.sourcegitcommit: 18f734eeb1031a9cb69c3b294632efd2e69324ac
+ms.openlocfilehash: 03b79f321ac3b5f7a5b9a03a3760db5649898eed
+ms.sourcegitcommit: 66d8872bc3d24c2121e225be132b56f4df7920ac
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 11/17/2021
-ms.locfileid: "132832678"
+ms.lasthandoff: 02/12/2022
+ms.locfileid: "138597268"
 ---
 # <a name="create-and-explore-an-azure-machine-learning-workspace"></a>Creare ed esplorare un'area di lavoro di Azure Machine Learning
 
@@ -65,8 +65,7 @@ Uno dei vantaggi offerti da Azure Machine Learning è la possibilità di creare 
         - **Abilita rete virtuale**: deselezionata *(viene solitamente usata negli ambienti aziendali per migliorare la sicurezza di rete)*
         - **Assegna a un altro utente**: deselezionata *(è possibile usarla per assegnare un'istanza di ambiente di calcolo a un data scientist)* . Attendere che l'istanza di calcolo venga avviata e che ne venga modificato lo stato in **Esecuzione**.
 
-> [!NOTE]
-> Le istanze di calcolo e i cluster sono basati su immagini di macchine virtuali di Azure Standard. Per questo esercizio, è consigliabile usare l'immagine *Standard_DS11_v2* per ottenere un equilibrio ottimale tra costi e prestazioni. Se la quota della sottoscrizione in uso non include questa immagine, scegliere un'immagine alternativa, ma tenere presente che un'immagine superiore può generare costi più elevati e un'immagine inferiore potrebbe non essere sufficiente per completare le attività. In alternativa, chiedere all'amministratore di Azure di estendere la quota.
+> **Nota**: Le istanze di calcolo e i cluster sono basati su immagini di macchine virtuali di Azure Standard. Per questo esercizio, è consigliabile usare l'immagine *Standard_DS11_v2* per ottenere un equilibrio ottimale tra costi e prestazioni. Se la quota della sottoscrizione in uso non include questa immagine, scegliere un'immagine alternativa, ma tenere presente che un'immagine superiore può generare costi più elevati e un'immagine inferiore potrebbe non essere sufficiente per completare le attività. In alternativa, chiedere all'amministratore di Azure di estendere la quota.
 
 ## <a name="clone-and-run-a-notebook"></a>Clonare ed eseguire un notebook
 
@@ -85,7 +84,11 @@ La sperimentazione di processi di data science e Machine Learning viene eseguita
 5. Chiudere il riquadro del terminale per terminare la sessione.
 6. Nella cartella **/users/*nome-utente*/mslearn-dp100** aprire il notebook **Get Started with Notebooks**. Leggere quindi le note e seguire le istruzioni riportate.
 
-> **Suggerimento**: per eseguire una cella di codice, selezionarla e fare clic sul pulsante **&#9655;** per eseguirla.
+> **Suggerimento**: per eseguire una cella di codice, selezionarla e fare clic sul pulsante **&#9655;** per eseguirla. 
+
+> **Se non si conosce Python** Usare la [scheda di informazioni di Python](cheat-sheets/dp100-cheat-sheet-python.pdf) per comprendere il codice.
+
+> **Se non si ha esperienza di Machine Learning** Usare la [panoramica di Machine Learning](cheat-sheets/dp100-cheat-sheet-machine-learning.pdf) per una panoramica semplificata del processo di Machine Learning in Azure Machine Learning.
 
 ## <a name="stop-your-compute-instance"></a>Arrestare l'istanza di ambiente di calcolo
 
