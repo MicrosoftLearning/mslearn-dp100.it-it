@@ -1,12 +1,12 @@
 ---
 lab:
   title: Creare un'area di lavoro di Machine Learning di Azure
-ms.openlocfilehash: 03b79f321ac3b5f7a5b9a03a3760db5649898eed
-ms.sourcegitcommit: 66d8872bc3d24c2121e225be132b56f4df7920ac
+ms.openlocfilehash: c2f33973281221da1a4871f19fbaff8f127d028f
+ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 02/12/2022
-ms.locfileid: "138597268"
+ms.lasthandoff: 04/01/2022
+ms.locfileid: "141346679"
 ---
 # <a name="create-and-explore-an-azure-machine-learning-workspace"></a>Creare ed esplorare un'area di lavoro di Azure Machine Learning
 
@@ -80,7 +80,7 @@ La sperimentazione di processi di data science e Machine Learning viene eseguita
     git clone https://github.com/MicrosoftLearning/mslearn-dp100 mslearn-dp100
     ```
 
-4. Dopo il completamento del comando, nel riquadro **File personali** fare clic su **&#8635;** per aggiornare la visualizzazione e verificare che sia stata creata una nuova cartella **/users/*nome-utente*/mslearn-dp100**. Nella cartella sono contenuti più file notebook con estensione **ipynb**.
+4. Dopo il completamento del comando, nel riquadro **File** fare clic su **&#8635;** per aggiornare la visualizzazione e verificare che sia stata creata una nuova cartella **/users/*nome-utente*/mslearn-dp100**. Nella cartella sono contenuti più file notebook con estensione **ipynb**.
 5. Chiudere il riquadro del terminale per terminare la sessione.
 6. Nella cartella **/users/*nome-utente*/mslearn-dp100** aprire il notebook **Get Started with Notebooks**. Leggere quindi le note e seguire le istruzioni riportate.
 
