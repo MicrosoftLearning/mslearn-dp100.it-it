@@ -1,12 +1,12 @@
 ---
 lab:
   title: Usare Machine Learning automatizzato
-ms.openlocfilehash: 25312648c7957dfd958098bc74faac249382eec8
-ms.sourcegitcommit: 48c912e43571d4bddcc70260e4dc85ebbc040b27
+ms.openlocfilehash: 9836a169752705779f263e7b005baf11e2f7b616
+ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 11/30/2021
-ms.locfileid: "133289667"
+ms.lasthandoff: 04/01/2022
+ms.locfileid: "141346685"
 ---
 # <a name="use-automated-machine-learning"></a>Usare Machine Learning automatizzato
 
@@ -28,7 +28,7 @@ Per poter usare Machine Learning automatizzato, è necessario un ambiente di cal
 2. In Azure Machine Learning Studio visualizzare la pagina **Calcolo** e nella scheda **Istanze di ambiente di calcolo** avviare l'istanza di calcolo se non è già in esecuzione. Questa istanza di calcolo verrà usata per testare il modello sottoposto a training.
 3. Mentre viene avviata l'istanza di ambiente di calcolo, passare alla scheda **Cluster di elaborazione** e aggiungere un nuovo cluster di elaborazione con le impostazioni specificate di seguito. L'esperimento di Machine Learning automatizzato verrà eseguito in questo cluster per usufruire della possibilità di distribuire le esecuzioni di training tra più nodi di calcolo:
     - **Posizione**: *la stessa posizione dell'area di lavoro*
-    - **Priorità macchina virtuale**: Dedicata
+    - **Livello macchina virtuale**: Dedicata
     - **Tipo di macchina virtuale**: CPU
     - **Dimensioni macchina virtuale**: Standard_DS11_v2
     - **Nome dell'ambiente di calcolo**: *immettere un nome univoco*
@@ -86,7 +86,8 @@ In Azure Machine Learning, le operazioni eseguite sono denominate *esperimenti*.
         - Selezionare **View additional configuration settings** (Visualizza altre impostazioni di configurazione) per aprire **Configurazioni aggiuntive**:
             - **Metrica primaria**: selezionare **AUC_Weighted** *(altre informazioni su questa metrica verranno fornite più avanti)*
             - **Spiega modello migliore**: Selezionato: *questa opzione fa in modo che il Machine Learning automatizzato calcoli l'importanza della funzionalità per il modello migliore, rendendo possibile determinare l'influenza di ogni funzionalità nell'etichetta stimata.*
-            - **Algoritmi bloccati**: lasciare l'impostazione predefinita. *Teoricamente, è possibile usare tutti gli algoritmi durante il training*
+            - **Usare tutti i modelli supportati**: <u>non</u> selezionata: durante l'esperimento si proveranno solo alcuni algoritmi specifici.
+            - **Modelli consenti**: selezionare solo **LogisticRegression** e **RandomForest**. Questi algoritmi saranno gli unici provati durante l'esperimento.
             - **Criterio di uscita**:
                 - **Tempo del processo di training (ore)**: 0,5. *L'esperimento terminerà dopo un massimo di 30 minuti.*
                 - **Soglia di punteggio metrica**: 0,90. *L'esperimento termina se un modello raggiunge una metrica AUC ponderata del 90% o superiore.*
