@@ -10,7 +10,7 @@ ms.locfileid: "145192783"
 
 Questo repository contiene le esercitazioni pratiche per il corso Microsoft [DP-100 *Designing and Implementing a Data Science Solution on Azure*](https://docs.microsoft.com/learn/certifications/courses/dp-100t01) e i relativi [moduli autogestiti su Microsoft Learn](https://docs.microsoft.com/learn/paths/build-ai-solutions-with-azure-ml-service/). I lab sono progettati per accompagnare i materiali di apprendimento e consentire di esercitarsi nell'uso delle tecnologie descritte.
 
-Quando si usano questi lab in un corso con istruzioni, gli studenti devono usare la sottoscrizione di Azure fornita per il corso.
+Quando si usano questi lab in un corso con docente, gli studenti devono usare la sottoscrizione di Azure fornita per il corso.
 
 ## <a name="what-are-we-doing"></a>Quali attività vengono svolte?
 
