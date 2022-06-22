@@ -1,16 +1,16 @@
 ---
 lab:
   title: Usare la finestra di progettazione di Azure Machine Learning
-ms.openlocfilehash: 3bfe1bf2e119c295ad3931c569e1f09b41bb2174
-ms.sourcegitcommit: 38540a481d1dfa9bab570777b72e3cf9b6ee6da7
+ms.openlocfilehash: 55911fdc4ea7e3a2b48ab0d0a583a0a24121ffca
+ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 12/16/2021
-ms.locfileid: "135372694"
+ms.lasthandoff: 06/11/2022
+ms.locfileid: "146266849"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Usare la finestra di progettazione di Azure Machine Learning
 
-La *finestra di progettazione* di Azure Machine Learning offre un ambiente di trascinamento della selezione in cui è possibile definire un flusso di lavoro o una *pipeline* di moduli di inserimento dati, trasformazione e training del modello per creare un modello di Machine Learning. È quindi possibile pubblicare la pipeline come servizio Web che le applicazioni client possono usare per eseguire servizi di *inferenza* (generazione di stime da nuovi dati).
+La *finestra di progettazione* di Azure Machine Learning offre un ambiente di trascinamento della selezione in cui è possibile definire un flusso di lavoro o una *pipeline* di moduli di inserimento dati, trasformazione e componenti di training del modello per creare un modello di Machine Learning. È quindi possibile pubblicare la pipeline come servizio Web che le applicazioni client possono usare per eseguire servizi di *inferenza* (generazione di stime da nuovi dati).
 
 ## <a name="before-you-start"></a>Prima di iniziare
 
@@ -63,10 +63,10 @@ Ora che si hanno a disposizione alcune risorse di calcolo da poter usare per ese
 Per iniziare a usare la finestra di progettazione, è prima di tutto necessario creare una pipeline e aggiungere il set di dati che si vuole usare.
 
 1. In Azure Machine Learning Studio, visualizzare la pagina della **finestra di progettazione** e creare una nuova pipeline.
-2. Modificare il nome della pipeline predefinita (**Pipeline-Created-on-* data***) in **Visual Diabetes Training** facendo clic sul nome predefinito (oppure fare clic sull'icona **&#9881;** accanto al nome della pipeline in alto e modificare il nome).
+2. Modificare il nome della pipeline predefinito (**Pipeline-Created-on-* date***) in **Visual Diabetes Training** facendo clic sull'icona **&#9881;** a destra per aprire il riquadro **Impostazioni**.
 3. Tenere presente che è necessario specificare una destinazione di calcolo in cui eseguire la pipeline. Nel riquadro **Impostazioni** fare clic su **Seleziona destinazione di calcolo** e selezionare il cluster di elaborazione desiderato.
-4. Sul lato sinistro della finestra di progettazione espandere la sezione **Set di dati** e trascinare il **set di dati diabete** nell'area di disegno.
-5. Selezionare il modulo **set di dati diabete** nell'area di disegno. Farvi quindi clic con il pulsante destro del mouse e scegliere **Anteprima dei dati**.
+4. Sul lato sinistro della finestra di progettazione selezionare la scheda **Dati** e trascinare il **set di dati diabete** nell'area di disegno.
+5. Selezionare il componente del **set di dati diabete** nell'area di disegno. Farvi quindi clic con il pulsante destro del mouse e scegliere **Anteprima dei dati**.
 6. Nel riquadro DatasetOutput selezionare la scheda **Profilo**.
 7. Esaminare lo schema dei dati tenendo presente che è possibile visualizzare le distribuzioni delle varie colonne sotto forma di istogrammi. Chiudere quindi la finestra di visualizzazione.
 
@@ -74,9 +74,9 @@ Per iniziare a usare la finestra di progettazione, è prima di tutto necessario 
 
 Prima di poter eseguire il training di un modello, è necessario in genere applicare alcune trasformazioni di pre-elaborazione ai dati.
 
-1. Nel riquadro a sinistra espandere la sezione **Trasformazione dati**, in cui è disponibile un'ampia gamma di moduli utili per trasformare i dati prima del training del modello.
-2. Trascinare un modulo **Normalize Data** nell'area di disegno, sotto il **set di dati diabete**. Collegare quindi l'output del modulo **set di dati diabete** all'input del modulo **Normalize Data**.
-3. Selezionare il modulo **Normalize Data** e visualizzarne impostazioni: si noti che è necessario specificare il metodo di trasformazione e le colonne da trasformare. Lasciando quindi la trasformazione **ZScore**, modificare le colonne in modo da includere i nomi di colonna seguenti:
+1. Nel riquadro a sinistra selezionare la scheda **Componente** in cui è disponibile un'ampia gamma di componenti utili per trasformare i dati prima del training del modello. È possibile cercare i componenti nella parte superiore del riquadro.
+2. Cercare il componente **Normalize Data** (Normalizza dati) e trascinarlo nell'area di disegno sotto il componente del **set di dati diabete**. Collegare quindi l'output del componente del **set di dati diabete** all'input del componente **Normalize Data** (Normalizza dati).
+3. Selezionare il componente **Normalize Data** (Normalizza dati) e visualizzarne impostazioni: si noti che è necessario specificare il metodo di trasformazione e le colonne da trasformare. Lasciando quindi la trasformazione **ZScore**, modificare le colonne in modo da includere i nomi di colonna seguenti:
     * PlasmaGlucose
     * DiastolicBloodPressure
     * TricepsThickness
@@ -86,22 +86,22 @@ Prima di poter eseguire il training di un modello, è necessario in genere appli
 
     **Nota**: viene eseguita la normalizzazione delle colonne numeriche posizionandole sulla stessa scala, in modo da evitare colonne con valori di grandi dimensioni che dominino il training del modello. In genere, si applica un intero insieme di trasformazioni di pre-elaborazione come questo per preparare i dati per il training, ma in questo esercizio opteremo per una procedura semplificata.
 
-4. A questo punto, è possibile suddividere i dati in set di dati separati per il training e la convalida. Nella sezione **Trasformazione dati** del riquadro a sinistra trascinare un modulo **Split Data** sul canvas, sotto il modulo **Normalize Data**. Collegare quindi l'output (a sinistra) del *set di dati trasformato* del modulo **Normalize Data** all'input del modulo **Split Data**.
-5. Selezionare quindi il modulo **Split data** e configurarne le impostazioni come segue:
+4. A questo punto, è possibile suddividere i dati in set di dati separati per il training e la convalida. Nel riquadro a sinistra cercare il componente **Split Data** (Suddividi dati) e trascinarlo nell'area di disegno sotto il componente **Normalize Data** (Normalizza dati). Collegare quindi l'output (a sinistra) del *set di dati trasformato* del componente **Normalize Data** (Normalizza dati) all'input del componente **Split Data** (Suddividi dati).
+5. Selezionare il componente **Split Data** (Suddividi dati) e configurarne le impostazioni nel modo seguente:
     * **Splitting mode** (Modalità di suddivisione): Split Rows
     * **Fraction of rows in the first output dataset** (Frazione di righe nel primo set di dati di output): 0,7
     * **Random seed** (Valore di inizializzazione casuale): 123
     * **Stratified split** (Divisione stratificata): Falso
 
-## <a name="add-model-training-modules"></a>Aggiungere moduli di training del modello
+## <a name="add-model-training-components"></a>Aggiungere i componenti di training del modello
 
 Con i dati preparati e suddivisi in set di dati di training e convalida, è ora possibile configurare la pipeline per il training e la valutazione di un modello.
 
-1. Espandere la sezione **Training del modello** nel riquadro a sinistra e trascinare un modulo **Train Model** nell'area di disegno, sotto il modulo **Split Data**. Connettere quindi l'output di *Result dataset1* (a sinistra) del modulo **Split data** all'input di *Dataset* (a destra) del modulo **Train Model**.
-2. Il modello di cui si sta eseguendo il training prevede il valore **Diabetic**: selezionare quindi il modulo **Train Model** e modificarne le impostazioni in modo da impostare la **colonna di etichetta** su **Diabetic** (rispettare esattamente l'ortografia e i caratteri maiuscoli/minuscoli).
-3. L'etichetta **Diabetes** che verrà stimata dal modello è una colonna binaria (1 per i pazienti che diabetici, 0 per i pazienti che non hanno il diabete); è quindi necessario eseguire il training del modello usando un algoritmo di *classificazione*. Espandere la sezione **Algoritmi di Machine Learning** e nell'area **Classificazione** trascinare un modulo **Two-Class Logistic Regression** nell'area di disegno, a sinistra del modulo **Split Data** e sopra il modulo **Train Model**. Connetterne quindi l'output all'input **Untrained model** del modulo **Train Model**.
-4. Il test del modello con training si esegue usando il modello per assegnare un punteggio al set di dati di convalida separato durante la divisione dei dati originali. Espandere la sezione **Model Scoring & Evaluation** (Punteggio e valutazione del modello) e trascinare un modulo **Score Model** nell'area di disegno, sotto il modulo **Train Model**. Collegare quindi l'output del modulo **Train Model** all'input (a sinistra) del **modello con training** del modulo **Score Model** e trascinare l'output (a destra) del **secondo set di dati di risultato** del modulo **Split Data** nell'input (a destra) del **set di dati** del modulo **Score Model**.
-5. Per valutare le prestazioni del modello, è necessario prendere in esame alcune metriche generate durante l'attribuzione dei punteggi al set di dati di convalida. Trascinare un modulo **Evaluate Model** dalla sezione **Model Scoring & Evaluation** (Punteggio e valutazione modello) nell'area di lavoro e posizionarlo sotto il modulo **Score Model**. Collegare l'output del modulo **Score Model** all'input **Score dataset** (a sinistra) del modulo **Evaluate Model**.
+1. Cercare il componente **Train Model** (Training modello) e trascinarlo nell'area di disegno sotto il componente **Split Data** (Suddividi dati). Collegare quindi l'output (a sinistra) del *primo set di dati di risultato* del componente **Split Data** (Suddividi dati) all'input (a destra) del *set di dati* del componente **Train Model** (Training modello).
+2. Il modello di cui si sta eseguendo il training prevede il valore **Diabetico**: selezionare quindi il componente **Train Model** (Training modello) e modificarne le impostazioni in modo da impostare la **colonna etichetta** su **Diabetico** (rispettare esattamente l'ortografia e i caratteri maiuscoli/minuscoli)
+3. L'etichetta **Diabetes** che verrà stimata dal modello è una colonna binaria (1 per i pazienti che diabetici, 0 per i pazienti che non hanno il diabete); è quindi necessario eseguire il training del modello usando un algoritmo di *classificazione*. Cercare il componente **Two-Class Logistic Regression** (Regressione logistica a due classi) e trascinarlo nell'area di disegno, a sinistra del componente **Split Data** (Suddividi dati) e sopra il componente **Train Model** (Training modello). Connetterne quindi l'output all'input (a sinistra) del **modello non sottoposto a training** del componente **Train Model** (Training modello).
+4. Il test del modello con training si esegue usando il modello per assegnare un punteggio al set di dati di convalida separato durante la divisione dei dati originali. Cercare il componente **Score Model** (Punteggio modello) e trascinarlo nell'area di disegno, sotto il componente **Train Model** (Training modello). Collegare quindi l'output del componente **Train Model** (Training modello) all'input (a sinistra) del **modello con training** del componente **Score Model** (Punteggio modello) e trascinare l'output (a destra) del **secondo set di dati di risultato**  del componente **Split Data** (Suddividi dati) nell'input (a destra) del **set di dati** del componente **Score Model** (Punteggio modello).
+5. Per valutare le prestazioni del modello, è necessario prendere in esame alcune metriche generate durante l'attribuzione dei punteggi al set di dati di convalida. Cercare il componente **Evaluate Model** (Valutazione modello) e trascinarlo nell'area di disegno, sotto il componente **Score Model** (Punteggio modello) e connettere l'output del componente **Score Model** (Punteggio modello) all'input (a sinistra) del **set di dati di punteggio** del componente **Evaluate Model** (Valutazione modello).
 
 ## <a name="run-the-training-pipeline"></a>Eseguire la pipeline di training
 
@@ -117,10 +117,10 @@ Dopo aver definito i passaggi del flusso di dati, è possibile ora eseguire la p
     >
     > Mentre sono in esecuzione, è possibile visualizzare sia la pipeline che l'esperimento creati nelle pagine **Pipeline** ed **Esperimenti**. Al termine, tornare alla pipeline **Visual Diabetes Training** nella pagina della **finestra di progettazione**.
 
-3. Dopo aver completato il modulo **Normalize Data**, selezionarlo e nel riquadro **Impostazioni** e, in particolare, nella scheda **Outputs + logs** (Output e log), nell'area **Data outputs** (Output dati) della sezione **Set di dati trasformato**, fare clic sull'icona **Anteprima dei dati** e notare come sia possibile visualizzare le statistiche e le visualizzazioni di distribuzione per le colonne trasformate.
-4. Chiudere le visualizzazioni del modulo **Normalize Data** e attendere il completamento degli altri moduli. Visualizzare quindi l'output del modulo **Evaluate Model** per visualizzare le metriche delle prestazioni per il modello.
+3. Dopo il completamento del componente **Normalize Data** (Normalizza dati), selezionarlo e nel riquadro **Impostazioni** nella scheda **Outputs + logs** (Output e log) in **Data outputs** (Output dati) nella sezione **Transformed dataset** (Set di dati trasformato) fare clic sull'icona **Anteprima dei dati** e notare come sia possibile visualizzare le statistiche e le visualizzazioni di distribuzione per le colonne trasformate.
+4. Chiudere le visualizzazioni **Normalize Data** (Normalizza dati) e attendere il completamento degli altri componenti. Visualizzare quindi l'output del componente **Evaluate Model** (Valutazione modello) per visualizzare le metriche delle prestazioni per il modello.
 
-    **Nota**: le prestazioni di questo modello non sono molto elevate, soprattutto perché è stata eseguita solo una parte delle funzionalità di progettazione e di pre-elaborazione. È possibile provare altri algoritmi di classificazione e confrontare i risultati (connettere gli output del modulo **Split Data** a più moduli **Train Model** e **Score Model** e connettere un secondo modello con punteggio al modulo **Evaluate Model** per visualizzare un confronto affiancato). L'obiettivo dell'esercizio è semplicemente quello di illustrare l'interfaccia della finestra di progettazione e non di eseguire il training di un modello perfetto.
+    **Nota**: le prestazioni di questo modello non sono molto elevate, soprattutto perché è stata eseguita solo una parte delle funzionalità di progettazione e di pre-elaborazione. È possibile provare altri algoritmi di classificazione e confrontare i risultati (connettere gli output del componente **Split Data** (Suddividi dati) a più componenti **Train Model** (Training modello) e **Score Model** (Punteggio modello) e connettere un secondo modello con punteggio al componente **Evaluate Model** (Valutazione modello) per visualizzare un confronto affiancato). L'obiettivo dell'esercizio è semplicemente quello di illustrare l'interfaccia della finestra di progettazione e non di eseguire il training di un modello perfetto.
 
 ## <a name="create-an-inference-pipeline"></a>Creare una pipeline di inferenza
 
@@ -129,7 +129,7 @@ Dopo aver usato una pipeline di *training* per eseguire il training di un modell
 1. Nell'elenco a discesa **Create inference pipeline** fare clic su **Real-time inference pipeline**. Dopo alcuni secondi, verrà aperta una nuova versione della pipeline denominata **Visual Diabetes Training-real time inference**.
 2. Assegnare alla nuova pipeline il nome **Predict Diabetes** e riesaminarla. Poiché nella pipeline sono stati incapsulate le procedure di trasformazione della normalizzazione e di training del modello, si useranno le statistiche dei dati di training per la normalizzazione di tutti i nuovi valori dei dati e il modello sottoposto a training per l'assegnazione del punteggio ai nuovi dati.
 3. Tenere presente che la pipeline di inferenza presuppone che i nuovi dati corrispondano allo schema dei dati di training originali e, pertanto, conterrà il **set di dati diabete** della pipeline di training. I dati di input, tuttavia, includono l'etichetta **Diabetic** stimata dal modello, da cui non è semplice intuire che include i dati di nuovi pazienti per i quali non è ancora stata eseguita una stima sul diabete.
-4. Eliminare il **set di dati diabete** dalla pipeline di inferenza e sostituirlo con un modulo **Enter Data Manually** dalla sezione **Data Input and Output** (Input e output di dati). Collegare quindi il nuovo modulo allo stesso **set di dati** di input del modulo **Apply Transformation** come **input del servizio Web**. Modificare quindi le impostazioni del modulo **Enter Data Manually** in modo da usare l'input CSV seguente, che contiene i valori delle caratteristiche senza etichette per altre tre nuove osservazioni di pazienti:
+4. Eliminare il **set di dati diabete** dalla pipeline di inferenza e sostituirlo con un componente **Enter Data Manually** (Immetti dati manualmente) connettendolo all'input dello stesso **set di dati** del componente **Apply Transformation** (Applica trasformazione) come **input del servizio Web**. Modificare quindi le impostazioni del componente **Enter Data Manually** (Immetti dati manualmente) in modo da usare l'input CSV seguente, che contiene i valori delle funzionalità senza etichette per altre tre nuove osservazioni di pazienti:
 
 ```CSV
 PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,BMI,DiabetesPedigree,Age
@@ -138,8 +138,8 @@ PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,Seru
 1228510,4,115,50,29,243,34.69215364,0.741159926,59
 ```
 
-5. La pipeline di inferenza includerà il modulo **Evaluate Model**. Poiché tale modulo non è utile per eseguire stime a partire da nuovi dati, è necessario eliminarlo.
-6. L'output del modulo **Score Model** includerà tutte le funzionalità di input e l'etichetta stimata e il punteggio di probabilità. Per limitare l'output solo alla stima e alla probabilità, eliminare la connessione tra i moduli **Score Model** e **Web Service Output**, aggiungere un modulo **Execute Python Script** dalla sezione dedicata al **linguaggio Python** , connettere l'output del modulo **Score Model** al set di dati di input **Dataset1** (il più a sinistra) del modulo **Execute Python Script** e connettere infine l'output del modulo **Execute Python Script** al modulo **Web Service Output**. Modificare quindi le impostazioni del modulo **Execute Python Script** in modo da usare il codice seguente (sostituendo tutto il codice esistente):
+5. La pipeline di inferenza includerà il componente **Evaluate Model** (Valutazione modello). Poiché questo componente non è utile per eseguire stime a partire da nuovi dati, è necessario eliminarlo.
+6. L'output del componente **Score Model** (Punteggio modello) includerà tutte le funzionalità di input e l'etichetta stimata e il punteggio di probabilità. Per limitare l'output solo alla stima e alla probabilità, eliminare il collegamento tra il componente **Score Model** (Punteggio modello) e l'**output del servizio Web** e aggiungere un componente **Execute Python Script** (Esegui script Python). Collegare l'output del componente **Score Model** (Punteggio modello) all'input (a sinistra) del **primo set di dati** del componente **Execute Python Script** (Esegui script Python) e collegare l'output del componente **Execute Python Script** (Esegui script Python) all'**output del servizio Web**. Modificare quindi le impostazioni del componente **Execute Python Script** (Esegui script Python) in modo da usare il codice seguente (sostituendo tutto il codice esistente):
 
 ```Python
 import pandas as pd
@@ -152,7 +152,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
                             inplace=True)
     return scored_results
 ```
-> **Nota**: dopo aver incollato il codice nel modulo **Execute Python Script**, verificare che il codice risultante sia simile al codice sopra riportato. I rientri sono importanti in Python e il modulo avrà esito negativo se i rientri non vengono copiati correttamente. 
+> **Nota**: dopo aver incollato il codice nel componente **Execute Python Script** (Esegui script Python), verificare che il codice risultante sia simile al codice riportato sopra. I rientri sono importanti in Python e il componente avrà esito negativo se i rientri non vengono copiati correttamente. 
 
 7. Verificare che la pipeline sia simile alla seguente:
 
@@ -166,7 +166,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 > **Nota**: In questo esercizio si distribuirà il servizio Web in un'istanza di Azure Container (ACI). Questo tipo di risorsa di calcolo viene creato dinamicamente ed è utile per le attività di sviluppo e test. Per un ambiente di produzione, è necessario creare un *cluster di inferenza*, che fornisce un cluster del servizio Azure Kubernetes che offre scalabilità e sicurezza migliori.
 
-1. Se l'esecuzione della pipeline di inferenza **Predict Diabetes** non è ancora terminata, attenderne il completamento. Visualizzare quindi l'output del **set di dati di risultato** del modulo **Execute Python Script** per esaminare le etichette stimate e le probabilità relative alle tre osservazioni di pazienti nei dati di input.
+1. Se l'esecuzione della pipeline di inferenza **Predict Diabetes** non è ancora terminata, attenderne il completamento. Visualizzare quindi l'output del **set di dati di risultato** del componente **Execute Python Script** (Esegui script Python) per esaminare le etichette stimate e le probabilità relative alle tre osservazioni di pazienti nei dati di input.
 2. In alto a destra fare clic su **Distribuisci** e distribuire un nuovo endpoint in tempo reale usando le impostazioni seguenti:
     -  **Nome**: designer-predict-diabetes
     -  **Descrizione**: prevedere il diabete.

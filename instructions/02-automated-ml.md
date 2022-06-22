@@ -1,12 +1,12 @@
 ---
 lab:
   title: Usare Machine Learning automatizzato
-ms.openlocfilehash: 9836a169752705779f263e7b005baf11e2f7b616
-ms.sourcegitcommit: 8601551af6c32a4c75fd9ecffce750583c2ab4b8
+ms.openlocfilehash: 70580a25d4bcd3929697874650ea6865262871f4
+ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 04/01/2022
-ms.locfileid: "141346685"
+ms.lasthandoff: 06/11/2022
+ms.locfileid: "146266840"
 ---
 # <a name="use-automated-machine-learning"></a>Usare Machine Learning automatizzato
 
@@ -84,7 +84,7 @@ In Azure Machine Learning, le operazioni eseguite sono denominate *esperimenti*.
     - **Tipo di attività e impostazioni**:
         - **Tipo di attività**: classificazione
         - Selezionare **View additional configuration settings** (Visualizza altre impostazioni di configurazione) per aprire **Configurazioni aggiuntive**:
-            - **Metrica primaria**: selezionare **AUC_Weighted** *(altre informazioni su questa metrica verranno fornite più avanti)*
+            - **Metrica primaria**: Selezionare **AUC ponderata** *(altre informazioni su questa metrica saranno disponibili in seguito)*
             - **Spiega modello migliore**: Selezionato: *questa opzione fa in modo che il Machine Learning automatizzato calcoli l'importanza della funzionalità per il modello migliore, rendendo possibile determinare l'influenza di ogni funzionalità nell'etichetta stimata.*
             - **Usare tutti i modelli supportati**: <u>non</u> selezionata: durante l'esperimento si proveranno solo alcuni algoritmi specifici.
             - **Modelli consenti**: selezionare solo **LogisticRegression** e **RandomForest**. Questi algoritmi saranno gli unici provati durante l'esperimento.
@@ -106,7 +106,7 @@ In Azure Machine Learning, le operazioni eseguite sono denominate *esperimenti*.
 
 Al termine dell'esperimento, è possibile esaminare il modello con le prestazioni migliori che è stato generato (si noti che in questo caso sono stati usati criteri uscita per arrestare l'esperimento, quindi il modello "migliore" trovato dall'esperimento potrebbe non essere il miglior modello possibile, ma solo quello più adatto tenendo conto dei vincoli di tempo e di metriche previsti in questo esercizio).
 
-1. Nella scheda **Dettagli** dell'esecuzione del Machine Learning automatizzato, prendere nota del riepilogo del modello migliore.
+1. Nella scheda **Panoramica** dell'esecuzione del Machine Learning automatizzato, prendere nota del riepilogo del modello migliore.
 2. Selezionare il **Nome algoritmo** relativo al modello migliore per visualizzare l'esecuzione figlio che ha generato.
 
     Il modello migliore viene identificato in base alla metrica di valutazione specificata (*AUC_Weighted*). Per calcolare questa metrica, il processo di training ha usato alcuni dei dati per eseguire il training del modello e ha applicato una tecnica denominata *convalida incrociata*, per testare in modo iterativo il modello sottoposto a training con dati con cui non è stato eseguito il training e confrontare il valore stimato con il valore noto effettivo. Da questi confronti viene creata una *matrice di confusione* in formato tabulare di veri positivi, falsi positivi, veri negativi e falsi negativi e vengono calcolate metriche di classificazione aggiuntive, incluso un grafico ROC (Receiving Operator Curve) che confronta il tasso dei veri positivi con quello dei falsi positivi. L'area sotto la curva (AUC) è una metrica comunemente usata per valutare le prestazioni di classificazione.
@@ -120,7 +120,7 @@ Dopo aver usato il Machine Learning automatizzato per eseguire il training di al
 
 > **Nota**: in Azure Machine Learning, è possibile distribuire un servizio come Istanze di Azure Container (ACI) o in un cluster del servizio Azure Kubernetes (AKS). Per gli scenari di produzione è consigliabile usare una distribuzione di AKS, per la quale è necessario creare una destinazione di calcolo *cluster di inferenza*. In questo esercizio si userà un servizio ACI, che è una destinazione di distribuzione adatta per i test e non richiede la creazione di un cluster di inferenza.
 
-1. Selezionare la scheda **Dettagli** relativa all'esecuzione che ha prodotto il modello migliore.
+1. Selezionare la scheda **Panoramica** relativa all'esecuzione che ha prodotto il modello migliore.
 2. Dall'opzione **Distribuisci** usare il pulsante **Distribuisci in Servizio Web** per distribuire il modello con le impostazioni seguenti:
     - **Nome**: auto-predict-diabetes
     - **Descrizione**: prevedere il diabete
