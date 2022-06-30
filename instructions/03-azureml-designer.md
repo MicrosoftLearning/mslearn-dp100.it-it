@@ -1,12 +1,12 @@
 ---
 lab:
   title: Usare la finestra di progettazione di Azure Machine Learning
-ms.openlocfilehash: 55911fdc4ea7e3a2b48ab0d0a583a0a24121ffca
-ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
+ms.openlocfilehash: ce03f54e5762e66363608b88fd86ec1de5795a33
+ms.sourcegitcommit: 48bc4227570b0817702d195aa06fa4dabe1bbdd7
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 06/11/2022
-ms.locfileid: "146266849"
+ms.lasthandoff: 06/29/2022
+ms.locfileid: "146733077"
 ---
 # <a name="use-azure-machine-learning-designer"></a>Usare la finestra di progettazione di Azure Machine Learning
 
@@ -37,7 +37,7 @@ Per usare la finestra di progettazione di Azure Machine Learning, è necessario 
 
 Ora che si hanno a disposizione alcune risorse di calcolo da poter usare per eseguire una pipeline di training, è necessario acquisire alcuni dati per eseguire il training del modello.
 
-1. In Azure Machine Learning Studio visualizzare la pagina **Set di dati**. I set di dati rappresentano tabelle o file di dati specifici che si prevede di usare in Azure ML.
+1. In studio di Azure Machine Learning visualizzare la pagina **Dati**. I set di dati rappresentano tabelle o file di dati specifici che si prevede di usare in Azure ML.
 2. Se in precedenza è stato creato il **set di dati sul diabete**, aprirlo. In caso contrario, creare un nuovo set di dati da file Web, usando le impostazioni seguenti, e aprirlo:
     * **Informazioni di base**:
         * **Web URL** (URL Web): https://aka.ms/diabetes-data
@@ -64,10 +64,10 @@ Per iniziare a usare la finestra di progettazione, è prima di tutto necessario 
 
 1. In Azure Machine Learning Studio, visualizzare la pagina della **finestra di progettazione** e creare una nuova pipeline.
 2. Modificare il nome della pipeline predefinito (**Pipeline-Created-on-* date***) in **Visual Diabetes Training** facendo clic sull'icona **&#9881;** a destra per aprire il riquadro **Impostazioni**.
-3. Tenere presente che è necessario specificare una destinazione di calcolo in cui eseguire la pipeline. Nel riquadro **Impostazioni** fare clic su **Seleziona destinazione di calcolo** e selezionare il cluster di elaborazione desiderato.
+3. Tenere presente che è necessario specificare una destinazione di calcolo in cui eseguire la pipeline. Nel riquadro **Impostazioni** fare clic su **Seleziona tipo di ambiente di calcolo**, quindi selezionare Cluster di elaborazione, fare clic su Seleziona cluster di elaborazione di Azure ML, selezionare il cluster di elaborazione e chiudere Impostazioni.
 4. Sul lato sinistro della finestra di progettazione selezionare la scheda **Dati** e trascinare il **set di dati diabete** nell'area di disegno.
 5. Selezionare il componente del **set di dati diabete** nell'area di disegno. Farvi quindi clic con il pulsante destro del mouse e scegliere **Anteprima dei dati**.
-6. Nel riquadro DatasetOutput selezionare la scheda **Profilo**.
+6. Nel riquadro DataOutput selezionare la scheda **Profilo**.
 7. Esaminare lo schema dei dati tenendo presente che è possibile visualizzare le distribuzioni delle varie colonne sotto forma di istogrammi. Chiudere quindi la finestra di visualizzazione.
 
 ## <a name="add-transformations"></a>Aggiungi trasformazioni
@@ -126,10 +126,11 @@ Dopo aver definito i passaggi del flusso di dati, è possibile ora eseguire la p
 
 Dopo aver usato una pipeline di *training* per eseguire il training di un modello, è ora possibile creare una *pipeline di inferenza* che usi il modello sottoposto a training per stimare le etichette per i nuovi dati.
 
-1. Nell'elenco a discesa **Create inference pipeline** fare clic su **Real-time inference pipeline**. Dopo alcuni secondi, verrà aperta una nuova versione della pipeline denominata **Visual Diabetes Training-real time inference**.
-2. Assegnare alla nuova pipeline il nome **Predict Diabetes** e riesaminarla. Poiché nella pipeline sono stati incapsulate le procedure di trasformazione della normalizzazione e di training del modello, si useranno le statistiche dei dati di training per la normalizzazione di tutti i nuovi valori dei dati e il modello sottoposto a training per l'assegnazione del punteggio ai nuovi dati.
-3. Tenere presente che la pipeline di inferenza presuppone che i nuovi dati corrispondano allo schema dei dati di training originali e, pertanto, conterrà il **set di dati diabete** della pipeline di training. I dati di input, tuttavia, includono l'etichetta **Diabetic** stimata dal modello, da cui non è semplice intuire che include i dati di nuovi pazienti per i quali non è ancora stata eseguita una stima sul diabete.
-4. Eliminare il **set di dati diabete** dalla pipeline di inferenza e sostituirlo con un componente **Enter Data Manually** (Immetti dati manualmente) connettendolo all'input dello stesso **set di dati** del componente **Apply Transformation** (Applica trasformazione) come **input del servizio Web**. Modificare quindi le impostazioni del componente **Enter Data Manually** (Immetti dati manualmente) in modo da usare l'input CSV seguente, che contiene i valori delle funzionalità senza etichette per altre tre nuove osservazioni di pazienti:
+1. Nella scheda **Processi** passare alla pipeline completata. 
+2. Selezionare **Crea una pipeline di inferenza** e fare clic su **Pipeline di inferenza in tempo reale**. Dopo alcuni secondi, verrà aperta una nuova versione della pipeline denominata **Visual Diabetes Training-real time inference**.
+3. Assegnare alla nuova pipeline il nome **Predict Diabetes** e riesaminarla. Poiché nella pipeline sono stati incapsulate le procedure di trasformazione della normalizzazione e di training del modello, si useranno le statistiche dei dati di training per la normalizzazione di tutti i nuovi valori dei dati e il modello sottoposto a training per l'assegnazione del punteggio ai nuovi dati.
+4. Tenere presente che la pipeline di inferenza presuppone che i nuovi dati corrispondano allo schema dei dati di training originali e, pertanto, conterrà il **set di dati diabete** della pipeline di training. I dati di input, tuttavia, includono l'etichetta **Diabetic** stimata dal modello, da cui non è semplice intuire che include i dati di nuovi pazienti per i quali non è ancora stata eseguita una stima sul diabete.
+5. Eliminare il **set di dati diabete** dalla pipeline di inferenza e sostituirlo con un componente **Enter Data Manually** (Immetti dati manualmente) connettendolo all'input dello stesso **set di dati** del componente **Apply Transformation** (Applica trasformazione) come **input del servizio Web**. Modificare quindi le impostazioni del componente **Enter Data Manually** (Immetti dati manualmente) in modo da usare l'input CSV seguente, che contiene i valori delle funzionalità senza etichette per altre tre nuove osservazioni di pazienti:
 
 ```CSV
 PatientID,Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,BMI,DiabetesPedigree,Age

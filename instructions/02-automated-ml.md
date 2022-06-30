@@ -1,12 +1,12 @@
 ---
 lab:
   title: Usare Machine Learning automatizzato
-ms.openlocfilehash: 70580a25d4bcd3929697874650ea6865262871f4
-ms.sourcegitcommit: d2354e40eec31c22eb09381c6a890311cccc30c9
+ms.openlocfilehash: a4908c0de74edb6c2fdf7b1a7288014d1ab86b94
+ms.sourcegitcommit: 48bc4227570b0817702d195aa06fa4dabe1bbdd7
 ms.translationtype: HT
 ms.contentlocale: it-IT
-ms.lasthandoff: 06/11/2022
-ms.locfileid: "146266840"
+ms.lasthandoff: 06/29/2022
+ms.locfileid: "146733068"
 ---
 # <a name="use-automated-machine-learning"></a>Usare Machine Learning automatizzato
 
@@ -42,7 +42,7 @@ Per poter usare Machine Learning automatizzato, è necessario un ambiente di cal
 Ora che si hanno a disposizione alcune risorse di calcolo per l'elaborazione dei dati, è necessario trovare un modo per archiviare e inserire i dati da elaborare.
 
 1. Visualizzare i dati delimitati da virgole in https://aka.ms/diabetes-data nel Web browser. Eseguire quindi il salvataggio come file locale denominato **diabetes.csv** (il percorso di salvataggio non è rilevante).
-2. In Azure Machine Learning Studio visualizzare la pagina **Set di dati**. I set di dati rappresentano tabelle o file di dati specifici che si prevede di usare in Azure ML.
+2. In studio di Azure Machine Learning visualizzare la pagina **Dati**. I set di dati rappresentano tabelle o file di dati specifici che si prevede di usare in Azure ML.
 3. Creare un nuovo set di dati dai file locali, usando le impostazioni seguenti:
     * **Informazioni di base**:
         * **Nome**: set di dati diabete
